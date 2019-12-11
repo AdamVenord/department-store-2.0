@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :stuffs do
-      resource :reviews
+      resources :reviews
     end
   end
   

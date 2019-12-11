@@ -1,6 +1,6 @@
 class Api::ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :update, :destroy]
   before_action :set_stuff
+  before_action :set_review, only: [:show, :update, :destroy]
 
   def index
     render json: @stuff.reviews
@@ -10,7 +10,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def create
-    @review = @stuff.Reviews.new(stuff_params)
+    @review = @stuff.reviews.new(review_params)
 
     if review.save
       render json: review
@@ -32,10 +32,9 @@ class Api::ReviewsController < ApplicationController
   end
 
   private
-
-  def set_stuff
-    @stuff = Stuff.find(params[:stuff_id])
-  end
+    def set_stuff
+      @stuff = Stuff.find(params[:stuff_id])
+    end
 
     def set_review
       @review = Review.find(params[:id])
